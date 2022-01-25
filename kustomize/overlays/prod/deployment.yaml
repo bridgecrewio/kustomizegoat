@@ -1,0 +1,69 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kustomizegoat
+  namespace: kustomizegoat
+spec:
+  template:
+    metadata:
+      annotations:
+        seccomp.security.alpha.kubernetes.io/pod: "docker/default"
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - kustomizegoat
+            topologyKey: "kubernetes.io/hostname"
+      containers:
+      - image: eurogig/kustomizegoat
+        name: kustomizegoat
+        imagePullPolicy: Always
+        resources:
+          limits:
+            cpu: "1"
+            memory: "200Mi"
+          requests:
+            cpu: "0.6"
+            memory: "100Mi"
+        livenessProbe:
+          exec:
+            command:
+            - /bin/sh
+            - -c
+            - "[ -f /var/run/nginx.pid ] && ps -A | grep nginx"
+          initialDelaySeconds: 10
+          periodSeconds: 5
+        readinessProbe:
+          httpGet:
+            scheme: HTTP
+            path: /index.html
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 5
+        securityContext:
+          readOnlyRootFilesystem: true
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+              - ALL
+              - NET_RAW
+        volumeMounts:
+        - mountPath: /var/cache/nginx
+          name: cache-volume
+        - mountPath: /var/run
+          name: pid-volume
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10014
+        runAsGroup: 10014
+      volumes:
+      - name: cache-volume
+        emptyDir: {}
+      - name: pid-volume
+        emptyDir: {}
