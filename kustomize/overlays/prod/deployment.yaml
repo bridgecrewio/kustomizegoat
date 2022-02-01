@@ -20,7 +20,7 @@ spec:
                 - kustomizegoat
             topologyKey: "kubernetes.io/hostname"
       containers:
-      - image: nginx@sha256:57201d91b3f356bbde8f631613eda851c9d552edcfb3ba3dd3fcd3feb5278fa1
+      - image: eurogig/kustomizegoat@sha256:2e41051e1d71b27927d259f110f1dc218f68091da920f4afdcbbdddce9d64301
         name: kustomizegoat
         imagePullPolicy: Always
         resources:
