@@ -18,5 +18,5 @@ spec:
         app: kustomizegoat
     spec:
       containers:
-      - image: eurogig/kustomizegoat
+      - image: nginx:1.19
         name: kustomizegoat
