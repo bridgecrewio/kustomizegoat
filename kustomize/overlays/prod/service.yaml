@@ -8,4 +8,8 @@ metadata:
 spec:
   ports:
   - name: 80-80
+    port: 80
+    protocol: TCP
     targetPort: 80
+  selector:
+    app: kustomizegoat
