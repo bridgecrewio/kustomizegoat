@@ -1,4 +1,7 @@
-# KustomizeGoat 
+# KustomizeGoat - Vulnerable by design Kustomize deployment
+[![Maintained by Bridgecrew.io](https://img.shields.io/badge/maintained%20by-bridgecrew.io-blueviolet)](https://bridgecrew.io/?utm_source=github&utm_medium=organic_oss&utm_campaign=kustomizegoat)
+
+![Terragoat](images/kustomizegoat-logo.png)
 
 Demonstrating secure and non secure kubernetes IaC manifests using Kustomize.io (`kubectl -k`) overlays.
 
@@ -45,3 +48,9 @@ PR's and suggestions for further examples which highlight Kubernetes security po
 
 
 
+## Bridgecrew's IaC herd of goats
+
+* [CfnGoat](https://github.com/bridgecrewio/cfngoat) - Vulnerable by design Cloudformation template
+* [TerraGoat](https://github.com/bridgecrewio/terragoat) - Vulnerable by design Terraform stack
+* [CDKGoat](https://github.com/bridgecrewio/cdkgoat) - Vulnerable by design CDK application
+* [KustomizeGoat](https://github.com/bridgecrewio/kustomizegoat) - Vulnerable by design kustomize deployment

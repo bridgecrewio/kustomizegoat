@@ -20,3 +20,4 @@ spec:
       containers:
       - image: eurogig/kustomizegoat:0.1
         name: kustomizegoat
+
