@@ -3,9 +3,6 @@ kind: Service
 metadata:
   labels:
     app: kustomizegoat
+    env: prod
   name: goatlb
   namespace: kustomizegoat
-spec:
-  ports:
-  - name: 80-80
-    targetPort: 80
