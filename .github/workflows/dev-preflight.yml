@@ -6,7 +6,8 @@ name: DEVCD-Checkov
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches: [ main ]
+    paths:
+    - 'kustomize/overlays/dev/**'
   pull_request:
     branches: [ main ]
 
@@ -19,12 +20,7 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    steps:
-      - name: Kubectl tool installer
-        uses: Azure/setup-kubectl@v2.0
-        with:
-          # Version of kubectl
-          version: v1.22.4    
+    steps:  
       - uses: actions/checkout@v2
       - name: Set up Python 3.8
         uses: actions/setup-python@v1
@@ -34,5 +30,5 @@ jobs:
         id: checkov
         uses: bridgecrewio/checkov-action@master
         with:
-          directory: kustomize/base
-          framework: kubernetes 
+          directory: kustomize/overlays/dev
+          framework: kustomize 
