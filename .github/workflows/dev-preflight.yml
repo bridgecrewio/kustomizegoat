@@ -34,5 +34,5 @@ jobs:
         id: checkov
         uses: bridgecrewio/checkov-action@master
         with:
-          directory: kustomize/overlays/dev
-          framework: kustomize 
+          directory: kustomize/base
+          framework: kubernetes 
