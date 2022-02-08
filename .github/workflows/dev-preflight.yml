@@ -20,6 +20,11 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     steps:
+      - name: Kubectl tool installer
+        uses: Azure/setup-kubectl@v2.0
+        with:
+          # Version of kubectl
+          version: v1.22.4    
       - uses: actions/checkout@v2
       - name: Set up Python 3.8
         uses: actions/setup-python@v1
