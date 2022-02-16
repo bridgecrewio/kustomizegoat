@@ -1,0 +1,8 @@
+- repo: https://github.com/bridgecrewio/checkov.git
+  rev: '2.0.809' # change to tag or sha
+  hooks:
+    - id: checkov
+      entry: checkov -d kustomize/overlays/prod
+      verbose: true
+      files: \.yaml$
+      args: ["--framework","kustomize"]
