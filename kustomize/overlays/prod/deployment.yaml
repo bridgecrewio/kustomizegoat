@@ -5,9 +5,6 @@ metadata:
   namespace: kustomizegoat
 spec:
   template:
-    metadata:
-      annotations:
-        seccomp.security.alpha.kubernetes.io/pod: "docker/default"
     spec:
       affinity:
         podAntiAffinity:
@@ -59,6 +56,8 @@ spec:
           name: pid-volume
       automountServiceAccountToken: false
       securityContext:
+        seccompProfile:
+          type: RuntimeDefault
         runAsNonRoot: true
         runAsUser: 10014
         runAsGroup: 10014
