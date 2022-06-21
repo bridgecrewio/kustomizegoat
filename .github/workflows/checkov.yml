@@ -17,3 +17,4 @@ jobs:
       uses: bridgecrewio/checkov-action@master
       with:
         api-key: ${{ secrets.BC_API_KEY }}
+        output_format: github_failed_only
